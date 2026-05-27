@@ -1,0 +1,109 @@
+# 金融書翻譯起手包 — Charles 投研書庫常用詞
+# 用法：translate.py --book foo.epub --glossary ~/.claude/skills/bilingual-book-translator/glossary/finance.yaml
+
+terms:
+  # 風險 / 統計
+  tail risk: 尾部風險
+  fat tail: 肥尾
+  black swan: 黑天鵝
+  white swan: 白天鵝
+  drawdown: 回撤
+  maximum drawdown: 最大回撤
+  volatility: 波動率
+  variance: 變異數
+  standard deviation: 標準差
+  correlation: 相關性
+  Sharpe ratio: 夏普比率
+  Sortino ratio: 索丁諾比率
+  Kelly criterion: 凱利公式
+
+  # 選擇權 / 衍生品
+  option: 選擇權
+  call option: 買權
+  put option: 賣權
+  strike price: 履約價
+  premium: 權利金
+  implied volatility: 隱含波動率
+  delta: Delta（價格敏感度）
+  gamma: Gamma（Delta 敏感度）
+  vega: Vega（波動率敏感度）
+  theta: Theta（時間損耗）
+
+  # 估值 / 報酬
+  alpha: 超額報酬
+  beta: 市場敏感度
+  fair value: 公允價值
+  intrinsic value: 內在價值
+  margin of safety: 安全邊際
+  P/E ratio: 本益比
+  P/B ratio: 股價淨值比
+  EV/EBITDA: 企業價值倍數
+  free cash flow: 自由現金流
+  WACC: 加權平均資金成本
+  DCF: 折現現金流估值
+  reverse DCF: 反推 DCF
+
+  # 行為 / 心理
+  reflexivity: 反身性
+  recency bias: 近因偏誤
+  anchoring: 錨定效應
+  confirmation bias: 確認偏誤
+  overconfidence: 過度自信
+  loss aversion: 損失趨避
+  herd behavior: 從眾行為
+  narrative fallacy: 敘事謬誤
+
+  # 投資哲學
+  margin call: 追繳保證金
+  bull market: 多頭市場
+  bear market: 空頭市場
+  drawdown: 回撤
+  position sizing: 倉位管理
+  asymmetric payoff: 不對稱報酬
+  convexity: 凸性
+  antifragility: 反脆弱
+  skin in the game: 局中人 / 利害相關
+  via negativa: 否定法
+  barbell strategy: 槓鈴策略
+  Lindy effect: Lindy 效應
+
+  # 估值大師專用
+  R&D capitalization: 研發費用資本化
+  operating lease: 經營租賃
+  return on invested capital: 投入資本報酬率
+  ROIC: 投入資本報酬率
+  ROE: 股東權益報酬率
+  ROA: 資產報酬率
+
+proper_nouns:
+  Nassim Taleb: 塔雷伯
+  Nassim Nicholas Taleb: 塔雷伯
+  Benoit Mandelbrot: 曼德博
+  Aswath Damodaran: 達摩達蘭
+  Robert Shiller: 席勒
+  Warren Buffett: 巴菲特
+  Charlie Munger: 蒙格
+  Howard Marks: 霍華馬克斯
+  Ray Dalio: 達里歐
+  George Soros: 索羅斯
+  Stanley Druckenmiller: 德魯肯米勒
+  Peter Lynch: 林區
+  Philip Fisher: 費雪
+  Benjamin Graham: 葛拉漢
+  Jesse Livermore: 李佛摩
+  John Bogle: 柏格
+  Eugene Fama: 法瑪
+  Daniel Kahneman: 康納曼
+  Amos Tversky: 特沃斯基
+  Richard Thaler: 塞勒
+
+  # 機構 / 經典書
+  Federal Reserve: 聯準會
+  FOMC: 聯邦公開市場委員會
+  S&P 500: 標普 500
+  Nasdaq: 那斯達克
+  Berkshire Hathaway: 波克夏
+  Bridgewater: 橋水
+  Renaissance Technologies: 文藝復興科技
+  Long-Term Capital Management: 長期資本管理公司
+  LTCM: 長期資本管理公司

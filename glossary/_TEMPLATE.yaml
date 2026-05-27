@@ -1,0 +1,19 @@
+# Glossary 模板 — 複製此檔到 {topic}.yaml 後填入
+#
+# 用法：translate.py --glossary path/to/this.yaml
+# 規則：
+#   - keys 是英文原詞（大小寫不敏感比對，但用 \b word boundary）
+#   - values 是中文譯詞
+#   - chunker 會自動 grep chunk 內出現的 keys，只把命中項注入 LLM prompt
+#     （避免幾百條 glossary 全塞 context 浪費 token）
+
+terms:
+  # 通用術語 — 一般名詞
+  example_term: 範例術語
+  # foo: 富
+  # bar: 巴
+
+proper_nouns:
+  # 專有名詞 — 人名、地名、機構
+  Example Person: 範例人物
+  # Nassim Taleb: 塔雷伯
