@@ -1,6 +1,6 @@
 ---
 name: bilingual-book-translator
-description: 把英文 epub 電子書翻成中英雙語 epub，LLM call 走 `claude -p` subprocess 吃 CC 訂閱額度（不必 API key）。借鏡 yihong0618/bilingual_book_maker 方法論：結構保留 + token chunking + context rolling 5 段 + pickle resume。預設 Opus 4.7（最準，Charles 21 本實戰用此），可選 Sonnet 4.6 / Haiku 4.5。觸發詞：「翻譯這本書 {path}」「epub 雙語化」「/bilingual-book-translator {path}」「把 {path} 翻成繁中雙語」。當 Charles 提供 epub 路徑要轉雙語、或想用 CC 額度跑書籍翻譯時觸發。P0 MVP：epub only / 單 pass / 手動 glossary。
+description: 把英文 epub 電子書翻成中英雙語 epub，LLM call 走 `claude -p` subprocess 吃 CC 訂閱額度（不必 API key）。借鏡 yihong0618/bilingual_book_maker 方法論：結構保留 + token chunking + context rolling 5 段 + pickle resume。預設 Opus 4.7（最準），可選 Sonnet 4.6 / Haiku 4.5。觸發詞：「翻譯這本書 {path}」「epub 雙語化」「/bilingual-book-translator {path}」「把 {path} 翻成繁中雙語」。當使用者提供 epub 路徑要轉雙語、或想用 CC 額度跑書籍翻譯時觸發。P0 MVP：epub only / 單 pass / 手動 glossary。注意：翻譯成果僅供個人閱讀，請尊重原書著作權。
 type: tool
 ---
 
@@ -15,8 +15,8 @@ type: tool
 ## 使用範例
 
 ```
-User: 翻譯 ~/Documents/books/superforecasting.epub 成繁中
-Iris:    [run translate.py --book ~/Documents/books/superforecasting.epub --dry-run]
+User: 翻譯 ~/Documents/books/mybook.epub 成繁中
+Iris:    [run translate.py --book ~/Documents/books/mybook.epub --dry-run]
          287 頁 / 約 124k token / 切 83 chunk / 預估 12-25 分鐘（Sonnet 4.6）
          確認跑嗎？
 User: 跑
@@ -24,8 +24,8 @@ Iris:    [run translate.py 真實翻譯]
          chunk 1/83 ✓ (8s) ...
          chunk 20/83 ✓ 已寫 temp_bilingual.epub 預覽
          ...
-         完成。superforecasting_bilingual.epub 已寫出。
-         log: ~/.claude/skills/bilingual-book-translator/runs/superforecasting/log/
+         完成。mybook_bilingual.epub 已寫出。
+         log: ~/.claude/skills/bilingual-book-translator/runs/mybook/log/
 ```
 
 ## 觸發 SOP（給 Claude Code 讀）
@@ -101,7 +101,7 @@ python scripts/patch_missing_paragraphs.py --book <bilingual.epub> --model opus
 
 - 小說 / 科普 / 快速試譯 → `haiku`
 - 金融書 / 一般技術書 / 一般非小說 → `sonnet`（較快、撞 5h 上限機會低）
-- 文學 / 哲學味重（Taleb / Mandelbrot）/ 深度作品 → `opus`（**預設**，Charles 21 本實戰用此；長書會撞 5h 額度但 quota sleep + pickle resume 自動接得回）
+- 文學 / 哲學 / 深度作品 → `opus`（**預設**，多本實戰驗證；長書會撞 5h 額度但 quota sleep + pickle resume 自動接得回）
 
 ## 文件索引
 

@@ -76,17 +76,10 @@ terms:
   ROA: 資產報酬率
 
 proper_nouns:
-  Nassim Taleb: 塔雷伯
-  Nassim Nicholas Taleb: 塔雷伯
-  Benoit Mandelbrot: 曼德博
-  Aswath Damodaran: 達摩達蘭
-  Robert Shiller: 席勒
-  Warren Buffett: 巴菲特
-  Charlie Munger: 蒙格
-  Howard Marks: 霍華馬克斯
-  Ray Dalio: 達里歐
-  George Soros: 索羅斯
-  Stanley Druckenmiller: 德魯肯米勒
+  # 此處留空 — 請依你閱讀的書內容自行添加人名 / 公司 / 機構名稱對照
+  # 範例格式（拿掉 # 即生效）：
+  # John Doe: 約翰道
+  # Acme Corp: 艾克美公司
   Peter Lynch: 林區
   Philip Fisher: 費雪
   Benjamin Graham: 葛拉漢

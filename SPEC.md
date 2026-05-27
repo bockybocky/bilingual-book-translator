@@ -32,14 +32,14 @@ date: 2026-05-13
 ## 2. 使用流程（用戶角度）
 
 ```
-User: 翻譯 ~/Documents/books/superforecasting.epub 成繁中
+User: 翻譯 ~/Documents/books/mybook.epub 成繁中
 Iris:    [估算] 287 頁 / 約 124k token / 切 83 chunk / 預估 12-25 分鐘
          確認跑嗎？
 User: 跑
 Iris:    [跑 dry-run 驗 chunk 邊界 OK]
          [跑真實翻譯，每 20 chunk 寫 temp.epub + 進度回報]
-         [完成] superforecasting_bilingual.epub 已寫出
-         glossary 候選詞抽出 → ~/glossary/superforecasting_candidates.yaml
+         [完成] mybook_bilingual.epub 已寫出
+         glossary 候選詞抽出 → ~/glossary/mybook_candidates.yaml
          要校 glossary 跑第二 pass 嗎？
 User: （選） 校完跑 / 不用
 ```
@@ -96,7 +96,7 @@ USER_PROMPT_TEMPLATE = """[Context from previous paragraphs - for continuity onl
 MODEL_MAP = {
     "haiku":  "claude-haiku-4-5-20251001",
     "sonnet": "claude-sonnet-4-6",
-    "opus":   "claude-opus-4-7",       # 預設（Charles 21 本實戰用此）
+    "opus":   "claude-opus-4-7",       # 預設（多本實戰驗證）
 }
 
 env["CLAUDE_HOOK_BYPASS"] = "1"
@@ -139,8 +139,8 @@ terms:
   alpha: 超額報酬
   drawdown: 回撤
 proper_nouns:
-  Nassim Taleb: 塔雷伯
-  Benoit Mandelbrot: 曼德博
+  # 範例格式：原文人名: 中譯
+  # 自行填入你的書中常出現的專有名詞
 ```
 
 只把 chunk 內出現的 term subset 注入 prompt（避免 5000 條 glossary 全塞）。
@@ -161,7 +161,7 @@ proper_nouns:
 |---|---|---|
 | `haiku` | 低（幾乎不會撞） | 小說 / 科普 / 快速試譯 |
 | `sonnet` | 中（約吃 1/3 5h 額度） | 金融書 / 一般技術書 |
-| `opus`（預設）| 高（1 本書可能撞 5h 上限，但 quota sleep + pickle resume 自動接得回，Charles 21 本實戰） | 文學 / 哲學味重（Taleb / Mandelbrot）/ 深度作品 |
+| `opus`（預設）| 高（1 本書可能撞 5h 上限，但 quota sleep + pickle resume 自動接得回，多本實戰驗證） | 文學 / 哲學 / 深度作品 |
 
 **Iris 跑前必檢**：
 - Opus 模式 → 警告 5h 額度可能撞限，建議「短書（<150p）或分段跑」

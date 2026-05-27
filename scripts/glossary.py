@@ -5,7 +5,7 @@ yaml 結構：
       option: 選擇權
       tail risk: 尾部風險
     proper_nouns:
-      Nassim Taleb: 塔雷伯
+      John Doe: 約翰道
 """
 from __future__ import annotations
 

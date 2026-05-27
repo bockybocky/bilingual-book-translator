@@ -5,11 +5,23 @@
 > 📖 **This project primarily serves Chinese-speaking readers; default README is in Traditional Chinese.**
 > 本專案主要面向華人讀者，預設 README 為繁體中文。
 
+> ⚠️ **Copyright Notice**
+>
+> This tool provides **translation technology only** and ships with no book content.
+>
+> **All translation output is for personal reference only.** Original books are copyrighted by their authors and publishers.
+>
+> **Please respect intellectual property: if you genuinely value an author's work, buy the original to support continued creation.**
+>
+> Do not distribute, resell, or upload translated output to any public platform. The tool authors are not responsible for any user actions that violate copyright law.
+
+---
+
 A Claude Code skill that turns English EPUB books into **bilingual (English + Traditional Chinese) EPUBs** using your Claude Code subscription — **no API key required**.
 
 Built on the methodology of [`yihong0618/bilingual_book_maker`](https://github.com/yihong0618/bilingual_book_maker), but routes every LLM call through `claude -p` subprocess so it consumes your existing CC Pro/Max subscription quota instead of pay-per-token API credits.
 
-**21+ books translated in production**, including Taleb, Mandelbrot, Power Law VC histories, AI policy, military strategy, and pop science.
+**Production-validated across multiple book genres** including literature, philosophy, business, popular science, and history.
 
 ## Why
 
@@ -68,15 +80,15 @@ python scripts/translate.py --book mybook.epub --model opus
 ### Translate a single book
 
 ```bash
-python scripts/translate.py --book ~/Documents/books/superforecasting.epub
+python scripts/translate.py --book ~/Documents/books/mybook.epub
 ```
 
-Output: `superforecasting_bilingual.epub` in the same directory as the source.
+Output: `mybook_bilingual.epub` in the same directory as the source.
 
 ### Dry-run (estimate chunks + time, no API calls)
 
 ```bash
-python scripts/translate.py --book superforecasting.epub --dry-run
+python scripts/translate.py --book mybook.epub --dry-run
 ```
 
 ### Use a glossary for term consistency
@@ -89,10 +101,10 @@ python scripts/translate.py --book trading_book.epub --glossary glossary/finance
 
 ```bash
 # Dry-run first to see what's missing
-python scripts/patch_missing_paragraphs.py --book superforecasting_bilingual.epub --dry-run
+python scripts/patch_missing_paragraphs.py --book mybook_bilingual.epub --dry-run
 
 # Then patch (auto-backs up to .epub.bak.patch)
-python scripts/patch_missing_paragraphs.py --book superforecasting_bilingual.epub --model opus
+python scripts/patch_missing_paragraphs.py --book mybook_bilingual.epub --model opus
 ```
 
 ### Skip books already translated (save tokens on reruns)
