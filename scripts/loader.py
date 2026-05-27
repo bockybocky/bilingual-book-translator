@@ -82,6 +82,11 @@ class EpubLoader:
     def _write(self, translations: dict[int, str], out_path: Path, partial: bool) -> None:
         new_book = self._clone_book()
 
+        # === 雙語 epub metadata 升級（Kobo / Kindle / 各家 reader 友善）===
+        # 主 language 改 zh-TW，讓 reader 自動載中文字型（解 Kobo 開不了 / 中文字型缺失問題）
+        # 原書語言 en 加為次要 language（EPUB 3 spec 允許多個 dc:language）
+        self._upgrade_bilingual_metadata(new_book)
+
         by_chapter: dict[str, dict[int, str]] = {}
         for idx, zh in translations.items():
             chap_id, tag_id = self._para_locations[idx]
@@ -120,3 +125,56 @@ class EpubLoader:
         zh_tag.attrs["lang"] = "zh-Hant"
         zh_tag.attrs["style"] = "color: #1e6cb6; font-size: 0.92em; line-height: 1.55;"
         tag.insert_after(zh_tag)
+
+    @staticmethod
+    def _upgrade_bilingual_metadata(book: epub.EpubBook) -> None:
+        """升級 epub metadata 給雙語 reader 用。
+
+        改動：
+        1. 主 dc:language 改 zh-TW（讓 Kobo 等 reader 自動載入中文字型）
+        2. 原書語言（通常 en）加為次要 dc:language（EPUB 3 spec 允許多個）
+        3. 加 dc:contributor 標翻譯工具來源（MARC role code 'trl' = translator）
+
+        為什麼這樣設計：
+        - Kobo / Kindle 看 dc:language 決定字型 → 標 en 的 epub 在某些 Kobo
+          韌體會「打不開」或中文顯示為方塊
+        - 標 zh-TW + 保留 en 為次要 = 中文字型 OK + 不丟失原書語言資訊
+        """
+        DC_NS = 'http://purl.org/dc/elements/1.1/'
+
+        # 偵測並保存原始 language codes（list of tuples [(value, attrs), ...]）
+        orig_langs = []
+        try:
+            dc_meta = book.metadata.get(DC_NS, {})
+            if 'language' in dc_meta:
+                orig_langs = [t[0] for t in dc_meta['language'] if t and t[0]]
+        except Exception:
+            pass
+
+        # 清空原 language metadata（避免重複）
+        try:
+            if DC_NS in book.metadata and 'language' in book.metadata[DC_NS]:
+                book.metadata[DC_NS]['language'] = []
+        except Exception:
+            pass
+
+        # 主 language: zh-TW（給 reader 自動載中文字型）
+        book.add_metadata('DC', 'language', 'zh-TW')
+
+        # 次要 language: 原書語言（去除重複 + zh-* 變體）
+        seen = {'zh-TW'}
+        for lang_code in orig_langs:
+            if not lang_code or lang_code.lower().startswith('zh') or lang_code in seen:
+                continue
+            book.add_metadata('DC', 'language', lang_code)
+            seen.add(lang_code)
+
+        # 加 translator contributor（標翻譯工具來源）
+        try:
+            book.add_metadata(
+                'DC', 'contributor',
+                'bilingual-book-translator (https://github.com/bockybocky/bilingual-book-translator)',
+                {'{http://www.idpf.org/2007/opf}role': 'trl'}  # MARC code 'trl' = translator
+            )
+        except Exception:
+            pass

@@ -625,7 +625,14 @@ A: 可以。`--lang "Simplified Chinese"` 翻簡中、`--lang "Japanese"` 翻日
 ### Q13: 翻完的 `_bilingual.epub` 可以放回 Kindle 嗎？
 A: 可以，把 epub 用 Calibre 轉成 mobi/azw3 後 send-to-Kindle。或用 [Send to Kindle](https://www.amazon.com/sendtokindle) 直接寄 epub（新版 Kindle 支援 epub）。
 
-### Q14: 環境變數 `BILINGUAL_BOOKS_DIR` 設了好像沒效果？
+### Q14: Kobo 電子書打不開翻好的 epub？
+A: 從 v1.1 起本工具自動把 `dc:language` 主標 `zh-TW`（原語言保留為次要），解決大部分 Kobo 字型 / 開檔問題。如果還是不行，三個 fallback：
+
+1. **改檔名再傳**：把 `The Book Name _ Subtitle_bilingual.epub` 之類有空格夾底線的檔名改成 `book_name.epub` 純 ASCII，某些 Kobo 韌體會卡特殊字元
+2. **Calibre 重新打包**：裝 [Calibre](https://calibre-ebook.com/)（免費）→ 拖 epub 進書庫 → 右鍵「轉換書籍」→ 輸出 EPUB → 確定。Calibre 會標準化 metadata，是 Kobo 相容性萬靈丹
+3. **Kobo Desktop App import**：用 Kobo 官方 desktop app import → 同步到裝置，會做一次標準化轉檔
+
+### Q15: 環境變數 `BILINGUAL_BOOKS_DIR` 設了好像沒效果？
 A: 確認 (1) 用對分隔符（Mac/Linux 用 `:`、Windows 用 `;`）(2) 路徑要存在、要可讀 (3) 重開 shell session 讓 env var 生效。
 
 ---
