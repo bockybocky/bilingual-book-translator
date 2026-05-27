@@ -1,5 +1,9 @@
 # bilingual-book-translator
 
+**English** | [繁體中文](README.zh-TW.md)
+
+> 📖 **中文使用者請看 [README.zh-TW.md](README.zh-TW.md)** — 完整中文說明、安裝步驟、使用範例與常見問題
+
 A Claude Code skill that turns English EPUB books into **bilingual (English + Traditional Chinese) EPUBs** using your Claude Code subscription — **no API key required**.
 
 Built on the methodology of [`yihong0618/bilingual_book_maker`](https://github.com/yihong0618/bilingual_book_maker), but routes every LLM call through `claude -p` subprocess so it consumes your existing CC Pro/Max subscription quota instead of pay-per-token API credits.
