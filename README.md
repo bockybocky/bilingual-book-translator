@@ -1,14 +1,33 @@
-# bilingual-book-translator（中英雙語電子書翻譯器）
+<div align="center">
 
-**繁體中文** | [English](README.en.md)
+# 📖 bilingual-book-translator
 
-> ⚠️ **著作權聲明 / Copyright Notice**
+### 中英雙語電子書翻譯器
+
+**用 Claude Code 訂閱額度翻譯英文 EPUB → 中英雙語對照版**
+**頂級 Opus 4.7 模型 · 零額外成本 · 文學品質**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Claude Code](https://img.shields.io/badge/Powered_by-Claude_Opus_4.7-D97757?logo=anthropic&logoColor=white)](https://www.anthropic.com/claude-code)
+[![Stars](https://img.shields.io/github/stars/bockybocky/bilingual-book-translator?style=social)](https://github.com/bockybocky/bilingual-book-translator/stargazers)
+[![Issues](https://img.shields.io/github/issues/bockybocky/bilingual-book-translator)](https://github.com/bockybocky/bilingual-book-translator/issues)
+[![Last Commit](https://img.shields.io/github/last-commit/bockybocky/bilingual-book-translator)](https://github.com/bockybocky/bilingual-book-translator/commits/main)
+
+**繁體中文** ・ [English](README.en.md)
+
+</div>
+
+---
+
+> [!WARNING]
+> ### ⚠️ 著作權聲明 / Copyright Notice
 >
 > 本工具僅提供**翻譯技術功能**，不附帶任何書籍內容。
 >
 > **所有透過本工具產生的翻譯成果，僅供個人閱讀參考。** 原書著作權屬於原作者與出版社，受著作權法保護。
 >
-> **請尊重智慧財產權：真正熱愛、支持原作的夥伴，請購買原作以支持作者持續創作。**
+> **🛍️ 請尊重智慧財產權：真正熱愛、支持原作的夥伴，請購買原作以支持作者持續創作。**
 >
 > 請勿散布、轉售、上傳到公開平台分享翻譯成果。本工具作者不對使用者違法散布翻譯內容的行為負責。
 
@@ -39,19 +58,46 @@
 - 智能 quota 等待：撞 5h 訂閱上限會自動 sleep 到 reset 時間 + 5 分鐘
 - 你只要按下開始，剩下放著等
 
+### 🆚 跟其他翻譯方案比一比
+
+| 方案 | 模型品質 | 結構保留 | 上下文 | 成本（30 萬字書）| 結構性漏譯偵測 |
+|---|:---:|:---:|:---:|:---:|:---:|
+| 🥇 **本工具** | **Opus 4.7（旗艦）** | ✅ EPUB 完整 | ✅ 5 段滾動 | **NT$0**（吃訂閱）| ✅ 獨有補翻工具 |
+| Google Translate | 機械翻譯 | ❌ 純文字 | ❌ 句句獨立 | NT$0–500 | ❌ |
+| DeepL | 專業翻譯（中等）| ⚠️ 部分支援 | ⚠️ 句子內 | NT$300–600/月訂閱 | ❌ |
+| ChatGPT / Claude 網頁手動貼 | 看你用哪檔 | ❌ 要手動處理 | 看你怎麼貼 | 時間成本極高 | ❌ |
+| `bilingual_book_maker` | 看你選哪檔 API | ✅ EPUB 完整 | ✅ 滾動視窗 | API key 計費 NT$1500–3000 | ❌ |
+
+```mermaid
+graph LR
+    A[📖 英文 EPUB] --> B[🧩 智能切塊<br/>1500 token]
+    B --> C[🤖 Claude Opus 4.7<br/>+ 5 段滾動上下文]
+    C --> D{對齊驗證}
+    D -->|OK| E[💾 寫入<br/>bilingual.epub]
+    D -->|有漏譯| F[🩹 patch_missing<br/>補翻工具]
+    F --> E
+    E --> G[📚 中英雙語<br/>對照閱讀]
+
+    style A fill:#e1f5ff
+    style C fill:#fff3cd
+    style E fill:#d4edda
+    style G fill:#d4edda
+```
+
 ---
 
-## 🎁 歡迎免費試用，誠摯歡迎回饋
-
-本工具 **MIT 開源、永久免費**。歡迎你：
-
-- 🚀 **立即下載試用**（[安裝步驟](#安裝步驟)只要 3 行指令）
-- ⭐ **如果好用請給個 Star** ——讓更多華人讀者找得到這個工具
-- 💬 **任何問題、bug、翻譯不順都歡迎回報**——開 [Issue](https://github.com/bockybocky/bilingual-book-translator/issues) 直接講
-- 🤝 **歡迎 PR**——加新功能、加 glossary、修 bug、改文檔都歡迎（[貢獻方向見最後一節](#貢獻)）
-- 💡 **歡迎拿去翻你想讀的書**——試完跟我們分享心得、跟其他翻譯軟體的比較、有什麼想增加的功能
-
-**這個工具是為了讓中文讀者能用最低成本、最高品質讀英文書而做的。你的回饋會直接影響下一版怎麼改。**
+> [!TIP]
+> ## 🎁 歡迎免費試用，誠摯歡迎回饋
+>
+> 本工具 **MIT 開源、永久免費**。歡迎你：
+>
+> - 🚀 **立即下載試用**（[安裝步驟](#安裝步驟)只要 3 行指令）
+> - ⭐ **如果好用請給個 Star** ——讓更多華人讀者找得到這個工具 [![Stars](https://img.shields.io/github/stars/bockybocky/bilingual-book-translator?style=social)](https://github.com/bockybocky/bilingual-book-translator/stargazers)
+> - 💬 **任何問題、bug、翻譯不順都歡迎回報**——開 [Issue](https://github.com/bockybocky/bilingual-book-translator/issues) 直接講
+> - 🤝 **歡迎 PR**——加新功能、加 glossary、修 bug、改文檔都歡迎（[貢獻方向見最後一節](#貢獻)）
+> - 💡 **歡迎拿去翻你想讀的書**——試完跟我們分享心得、跟其他翻譯軟體的比較、有什麼想增加的功能
+>
+> **這個工具是為了讓中文讀者能用最低成本、最高品質讀英文書而做的。你的回饋會直接影響下一版怎麼改。**
 
 ---
 
@@ -584,18 +630,44 @@ A: 確認 (1) 用對分隔符（Mac/Linux 用 `:`、Windows 用 `;`）(2) 路徑
 
 ---
 
-## 作者與致謝
+## 👥 作者與致謝
 
 ### 共同作者
 
-- **[Charles](https://github.com/bockybocky)** — 原始 skill 設計、方法論萃取、Windows / Iris 整合、多本書實戰驗證
-- **[Fred Chu](https://github.com/fredchu)** — `patch_missing_paragraphs.py` 補翻工具、跨平台 `claude` CLI 偵測、智能 quota sleep 重構、抗 prompt 注入 SYSTEM_PROMPT、公開發布前的通用化改寫
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/bockybocky">
+        <img src="https://github.com/bockybocky.png" width="100" height="100" style="border-radius:50%" alt="Charles"/>
+        <br/>
+        <b>Charles</b>
+      </a>
+      <br/>
+      原始 skill 設計<br/>
+      方法論萃取<br/>
+      Windows / Iris 整合<br/>
+      多本書實戰驗證
+    </td>
+    <td align="center">
+      <a href="https://github.com/fredchu">
+        <img src="https://github.com/fredchu.png" width="100" height="100" style="border-radius:50%" alt="Fred Chu"/>
+        <br/>
+        <b>Fred Chu</b>
+      </a>
+      <br/>
+      補翻工具<br/>
+      跨平台 CLI 偵測<br/>
+      智能 quota sleep<br/>
+      抗 prompt 注入強化
+    </td>
+  </tr>
+</table>
 
-### 致敬
+### 🙏 致敬
 
 本專案借鏡 [`yihong0618/bilingual_book_maker`](https://github.com/yihong0618/bilingual_book_maker) 的方法論。如果你需要支援多個 LLM 供應商（OpenAI / Gemini / DeepL 等）或偏好 API 計費，請使用原始的 `bilingual_book_maker`。
 
-### 共同協作
+### 🤖 共同協作
 
 - **Claude Opus 4.7（1M context）** — 程式碼撰寫 / debug / 文件協作
 
@@ -620,3 +692,23 @@ A: 確認 (1) 用對分隔符（Mac/Linux 用 `:`、Windows 用 `;`）(2) 路徑
 - 中文 → 英文翻譯支援（目前只測試英→中）
 
 開 PR 前請先開 Issue 討論方向，避免重工。
+
+---
+
+<div align="center">
+
+### ⭐ 覺得有用嗎？給個 Star 支持一下！
+
+[![Star History Chart](https://api.star-history.com/svg?repos=bockybocky/bilingual-book-translator&type=Date)](https://star-history.com/#bockybocky/bilingual-book-translator&Date)
+
+**讓更多想用低成本讀英文書的華人讀者找到這個工具 🙏**
+
+[🚀 立即試用](#安裝步驟) ・ [💬 開 Issue](https://github.com/bockybocky/bilingual-book-translator/issues/new) ・ [🤝 貢獻 PR](https://github.com/bockybocky/bilingual-book-translator/pulls)
+
+---
+
+Made with ❤️ by [Charles](https://github.com/bockybocky) & [Fred Chu](https://github.com/fredchu) for the Chinese-reading community
+
+**翻譯只是工具，請尊重原書著作權，支持原作者** 📚
+
+</div>

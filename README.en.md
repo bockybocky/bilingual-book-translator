@@ -1,17 +1,33 @@
-# bilingual-book-translator
+<div align="center">
 
-[繁體中文](README.md) | **English**
+# 📖 bilingual-book-translator
 
-> 📖 **This project primarily serves Chinese-speaking readers; default README is in Traditional Chinese.**
-> 本專案主要面向華人讀者，預設 README 為繁體中文。
+### Translate English EPUBs to bilingual (EN + 繁中) using Claude Code subscription
 
-> ⚠️ **Copyright Notice**
+**Powered by flagship Opus 4.7 · Zero extra cost · Literary-grade quality**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Claude Code](https://img.shields.io/badge/Powered_by-Claude_Opus_4.7-D97757?logo=anthropic&logoColor=white)](https://www.anthropic.com/claude-code)
+[![Stars](https://img.shields.io/github/stars/bockybocky/bilingual-book-translator?style=social)](https://github.com/bockybocky/bilingual-book-translator/stargazers)
+[![Issues](https://img.shields.io/github/issues/bockybocky/bilingual-book-translator)](https://github.com/bockybocky/bilingual-book-translator/issues)
+
+[繁體中文](README.md) ・ **English**
+
+> 📖 This project primarily serves Chinese-speaking readers; default README is in Traditional Chinese.
+
+</div>
+
+---
+
+> [!WARNING]
+> ### ⚠️ Copyright Notice
 >
 > This tool provides **translation technology only** and ships with no book content.
 >
 > **All translation output is for personal reference only.** Original books are copyrighted by their authors and publishers.
 >
-> **Please respect intellectual property: if you genuinely value an author's work, buy the original to support continued creation.**
+> **🛍️ Please respect intellectual property: if you genuinely value an author's work, buy the original to support continued creation.**
 >
 > Do not distribute, resell, or upload translated output to any public platform. The tool authors are not responsible for any user actions that violate copyright law.
 
