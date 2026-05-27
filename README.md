@@ -87,11 +87,11 @@ graph LR
 ---
 
 > [!TIP]
-> ## 🎁 歡迎免費試用，誠摯歡迎回饋
+> ## 🎁 開源免費，誠摯歡迎回饋
 >
 > 本工具 **MIT 開源、永久免費**。歡迎你：
 >
-> - 🚀 **立即下載試用**（[安裝步驟](#安裝步驟)只要 3 行指令）
+> - 🚀 **立即下載使用**（[安裝步驟](#安裝步驟)只要 3 行指令）
 > - ⭐ **如果好用請給個 Star** ——讓更多華人讀者找得到這個工具 [![Stars](https://img.shields.io/github/stars/bockybocky/bilingual-book-translator?style=social)](https://github.com/bockybocky/bilingual-book-translator/stargazers)
 > - 💬 **任何問題、bug、翻譯不順都歡迎回報**——開 [Issue](https://github.com/bockybocky/bilingual-book-translator/issues) 直接講
 > - 🤝 **歡迎 PR**——加新功能、加 glossary、修 bug、改文檔都歡迎（[貢獻方向見最後一節](#貢獻)）
@@ -703,7 +703,7 @@ A: 確認 (1) 用對分隔符（Mac/Linux 用 `:`、Windows 用 `;`）(2) 路徑
 
 **讓更多想用低成本讀英文書的華人讀者找到這個工具 🙏**
 
-[🚀 立即試用](#安裝步驟) ・ [💬 開 Issue](https://github.com/bockybocky/bilingual-book-translator/issues/new) ・ [🤝 貢獻 PR](https://github.com/bockybocky/bilingual-book-translator/pulls)
+[🚀 立即使用](#安裝步驟) ・ [💬 開 Issue](https://github.com/bockybocky/bilingual-book-translator/issues/new) ・ [🤝 貢獻 PR](https://github.com/bockybocky/bilingual-book-translator/pulls)
 
 ---
 

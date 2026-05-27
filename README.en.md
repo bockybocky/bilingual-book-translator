@@ -62,15 +62,15 @@
 
 ---
 
-## 🎁 Try it free — feedback warmly welcomed
+## 🎁 Free & Open Source — feedback warmly welcomed
 
 This tool is **MIT-licensed and forever free**. We invite you to:
 
-- 🚀 **Try it now** — [installation](#installation) is 3 lines of commands
+- 🚀 **Get started now** — [installation](#installation) is 3 lines of commands
 - ⭐ **Star this repo** if it helps you — make it discoverable for more readers
 - 💬 **Report any bugs, awkward translations, or wishes** — open an [Issue](https://github.com/bockybocky/bilingual-book-translator/issues)
 - 🤝 **PRs welcome** — new features, glossaries, bug fixes, docs improvements all welcome ([contribution directions below](#contributing))
-- 💡 **Try it on the book you want to read** — share your experience, compare against other tools, tell us what to improve
+- 💡 **Use it on the book you want to read** — share your experience, compare against other tools, tell us what to improve
 
 **This tool exists to let Chinese readers consume English books at the lowest cost and highest quality. Your feedback directly shapes the next version.**
 
