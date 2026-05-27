@@ -17,6 +17,51 @@
 
 ---
 
+---
+
+## ✨ Why this tool?
+
+### 🏆 Translation quality: the strongest you'll find
+
+**Powered by Anthropic's flagship Opus 4.7** — the same top-tier model in your Claude Code Pro / Max subscription. Most translation tools use cheaper small models to cut costs, producing "literal but disjointed" output that reads like Google Translate.
+
+**What you get:**
+- ✅ **Preserves tone, metaphor, wordplay, cultural references** — literature / philosophy reads like Chinese-native, not robotic
+- ✅ **5-paragraph rolling context window** — LLM knows what came before each paragraph, no semantic discontinuity
+- ✅ **Complete EPUB structure preservation** — chapters, blockquotes, footnotes, lists, captions all aligned, reading experience matches the original
+- ✅ **Hardened against prompt injection** — questions / commands / short sentences in the book won't be misread by the LLM as instructions (a common failure mode in other tools)
+- ✅ **Unique post-translation patch tool** — `patch_missing_paragraphs.py` catches paragraphs the main translator silently skipped (dialogue, poetry quotes, definition lists) and auto-translates them
+
+### 💸 Zero additional cost
+
+- You already pay for Claude Code Pro (~US$20/month) or Max (~US$100/month)
+- Competitor [`bilingual_book_maker`](https://github.com/yihong0618/bilingual_book_maker) bills via API key: opus costs roughly **US$50–100 per 300k-word book**
+- This tool routes through `claude -p` subprocess → **zero extra cost regardless of how many books you translate**
+
+### 🛡️ Resilient to quota hits / network drops / crashes
+
+- Pickle-based resume picks up exactly where it stopped
+- Smart quota wait: parses Anthropic's reset time, sleeps to reset+5min, auto-resumes
+- Press start, walk away
+
+---
+
+## 🎁 Try it free — feedback warmly welcomed
+
+This tool is **MIT-licensed and forever free**. We invite you to:
+
+- 🚀 **Try it now** — [installation](#installation) is 3 lines of commands
+- ⭐ **Star this repo** if it helps you — make it discoverable for more readers
+- 💬 **Report any bugs, awkward translations, or wishes** — open an [Issue](https://github.com/bockybocky/bilingual-book-translator/issues)
+- 🤝 **PRs welcome** — new features, glossaries, bug fixes, docs improvements all welcome ([contribution directions below](#contributing))
+- 💡 **Try it on the book you want to read** — share your experience, compare against other tools, tell us what to improve
+
+**This tool exists to let Chinese readers consume English books at the lowest cost and highest quality. Your feedback directly shapes the next version.**
+
+---
+
+## About
+
 A Claude Code skill that turns English EPUB books into **bilingual (English + Traditional Chinese) EPUBs** using your Claude Code subscription — **no API key required**.
 
 Built on the methodology of [`yihong0618/bilingual_book_maker`](https://github.com/yihong0618/bilingual_book_maker), but routes every LLM call through `claude -p` subprocess so it consumes your existing CC Pro/Max subscription quota instead of pay-per-token API credits.
